@@ -1,0 +1,46 @@
+# Run Tor only as a relay
+SOCKSPort 0
+ControlSocket 0
+
+# Log to stdout
+Log notice stdout
+
+## Required: what port to advertise for incoming Tor connections.
+ORPort 9001
+
+## The full DNS name for incoming connections to your relay.
+Address example.com
+
+## Disables ipv6
+# AddressDisableIPv6 1
+
+## A handle for your relay, so people don't have to refer to it by key.
+Nickname such_nickname
+
+## Administrative contact information for this relay.
+ContactInfo John DOE <john@doe.com>
+# You might also include your PGP or GPG fingerprint if you have one:
+# ContactInfo 0xFFFFFFFF John DOE <john@doe.com>
+
+# Don't be an exit relay
+ExitRelay 0
+
+# Enable Metrics with prometeus
+#MetricsPort 5000
+# Set who can access metrics
+#MetricsPortPolicy accept <ip>
+
+# More Statistics
+CellStatistics 1
+ConnDirectionStatistics 1
+DirReqStatistics 1
+EntryStatistics 1
+
+SafeLogging 1
+
+# Set GeoIP file location
+GeoIPFile /var/lib/tor/geoip
+GeoIPv6File /var/lib/tor/geoip6
+
+# Tor cannot exec another executable
+NoExec 1

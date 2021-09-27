@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  tor-relay:
+    build: .
+    image: lambdhack/tor-service:0.4.6.7
+    container_name: tor-relay
+    restart: unless-stopped
+    volumes:
+      - ./var/lib/tor/keys:/var/lib/tor/keys # relay backup keys
+      - ./torrc:/etc/torrc:ro
+    ports:
+      - 9001:9001
+
